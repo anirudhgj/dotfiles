@@ -1,0 +1,48 @@
+[user]
+  name=Anirudh Jamkhandi
+  email=anirudhgururaj@gmail.com
+
+[alias]
+  cm=commit
+  st=status -s
+  lg=log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  amend=commit --amend
+  stats=shortlog -sn
+  words=diff --word-diff
+  recent=for-each-ref --count=10 --sort=-committerdate refs/heads/ --format="%(refname:short)"
+  overview=log --all --since='2 weeks' --oneline --no-merges
+  recap=log --all --oneline --no-merges --author=anirudhgururaj@gmail.com
+  today=log --since=00:00:00 --all --no-merges --oneline --author=anirudhgururaj@gmail.com
+  graph=log --graph --all --decorate --stat --date=iso
+
+[diff]
+  tool=vimdiff
+  prompt=false
+
+[pager]
+  diff=diff-so-fancy | less --tabs=1,5 -RFX
+  show=diff-so-fancy | less --tabs=1,5 -RFX
+
+[core]
+  excludesfile=~/.gitignore
+  editor="nvim"
+
+[merge]
+  tool=vimdiff
+
+[credential]
+  helper = osxkeychain
+
+[push]
+  default=simple
+
+[filter "media"]
+  required=true
+  clean=git media clean %f
+  smudge=git media smudge %f
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
